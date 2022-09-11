@@ -8,8 +8,7 @@ const App = () => {
   const [currentNumber, setCurrentNumber] = useState('0');
   const [firstNumber, setFirstNumber] = useState('0');
   const [operation, setOperation] = useState('');
-
-  let memorNumber = '0';
+  const [ memorNumber, setMemorNumber ] = useState('0');
 
   const handleOnClear = () => {
     setCurrentNumber('0')
@@ -22,39 +21,43 @@ const App = () => {
   }
 
   const handleSumNumbers = () => {
-
+    if(currentNumber !== '0') {
       const sum = Number(firstNumber) + Number(currentNumber);
-      console.log(firstNumber+' + '+currentNumber+' = '+sum)
-      setFirstNumber(String(currentNumber));
+      console.log(Number(firstNumber)+'+'+Number(currentNumber)+'='+Number(sum));
+      setFirstNumber(String(sum));
       setCurrentNumber('0')
       setOperation('➕')
+    }   
   }
 
   const handleMinusNumbers = () => {
-
+    if(currentNumber !== '0') {
       const sum = Number(firstNumber) - Number(currentNumber);
-      console.log(firstNumber+' - '+currentNumber+' = '+sum)
-      setFirstNumber(String(currentNumber));
+      console.log(Number(firstNumber)+'-'+Number(currentNumber)+'='+Number(sum));
+      setFirstNumber(String(sum));
       setCurrentNumber('0')
       setOperation('➖')
+    } 
   }
 
   const handleMultNumbers = () => {
-
-    const sum = Number(firstNumber) * Number(currentNumber);
-      console.log(firstNumber+' ✖️ '+currentNumber+' = '+sum)
-      setFirstNumber(String(currentNumber));
+    if(currentNumber !== '0') {
+      const sum = Number(firstNumber) * Number(currentNumber);
+      console.log(Number(firstNumber)+'*'+Number(currentNumber)+'='+Number(sum));
+      setFirstNumber(String(sum));
       setCurrentNumber('0')
       setOperation('✖️')
+    }
   }
 
   const handleDiviNumbers = () => {
-
-    const sum = Number(firstNumber) / Number(currentNumber);
-      console.log(firstNumber+' ➗ '+currentNumber+' = '+sum)
-      setFirstNumber(String(currentNumber));
+    if(currentNumber !== '0') {
+      const sum = Number(firstNumber) / Number(currentNumber);
+      console.log(Number(firstNumber)+'/'+Number(currentNumber)+'='+Number(sum));
+      setFirstNumber(String(sum));
       setCurrentNumber('0')
       setOperation('➗')
+    }
   }
 
   const eraseToNumber = () => {
@@ -62,16 +65,16 @@ const App = () => {
   }
 
   const cleanMemorNumber = () => {
-    memorNumber = '0';
+    setMemorNumber('0');
     console.log(' Memory is clean!')
   }
 
   const AddMemorNumber = () => {
     if( memorNumber === '0' && currentNumber !== '0') {
-      memorNumber = currentNumber;
-      console.log(' Add to memory: '+memorNumber)
+      setMemorNumber(String(currentNumber));
+      console.log(' Add to memory!');
     } else {
-      handleAddNumber(memorNumber);
+      handleAddNumber(String(memorNumber));
     }
   }
   
@@ -81,28 +84,28 @@ const App = () => {
         switch(operation){
           case '➕':
             sum = Number(firstNumber) + Number(currentNumber);
-            console.log(firstNumber+' + '+currentNumber+' = '+sum+' [enter]')
+            console.log(Number(firstNumber)+'+'+Number(currentNumber)+'='+Number(sum));
             setCurrentNumber(String(sum))
             setFirstNumber('0')
             setOperation('')
             break;
           case '➖':
             sum = Number(firstNumber) - Number(currentNumber);
-            console.log(firstNumber+' - '+currentNumber+' = '+sum+' [enter]')
+            console.log(Number(firstNumber)+'-'+Number(currentNumber)+'='+Number(sum));
             setCurrentNumber(String(sum))
             setFirstNumber('0')
             setOperation('')
             break;
           case '✖️':
             sum = Number(firstNumber) * Number(currentNumber);
-            console.log(firstNumber+' ✖️ '+currentNumber+' = '+sum+' [enter]')
+            console.log(Number(firstNumber)+'*'+Number(currentNumber)+'='+Number(sum));
             setCurrentNumber(String(sum))
             setFirstNumber('0')
             setOperation('')
             break;  
           case '➗':
             sum = Number(firstNumber) / Number(currentNumber);
-            console.log(firstNumber+' ➗ '+currentNumber+' = '+sum+' [enter]')
+            console.log(Number(firstNumber)+'/'+Number(currentNumber)+'='+Number(sum));
             setCurrentNumber(String(sum))
             setFirstNumber('0')
             setOperation('')
