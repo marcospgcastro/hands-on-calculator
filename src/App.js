@@ -41,7 +41,7 @@ const App = () => {
 
   const handleMultNumbers = () => {
 
-    const sum = Number(firstNumber) + Number(currentNumber);
+    const sum = Number(firstNumber) * Number(currentNumber);
       console.log(firstNumber+' ✖️ '+currentNumber+' = '+sum)
       setFirstNumber(String(currentNumber));
       setCurrentNumber('0')
@@ -50,7 +50,7 @@ const App = () => {
 
   const handleDiviNumbers = () => {
 
-    const sum = Number(firstNumber) + Number(currentNumber);
+    const sum = Number(firstNumber) / Number(currentNumber);
       console.log(firstNumber+' ➗ '+currentNumber+' = '+sum)
       setFirstNumber(String(currentNumber));
       setCurrentNumber('0')
@@ -67,7 +67,7 @@ const App = () => {
   }
 
   const AddMemorNumber = () => {
-    if( memorNumber == '0') {
+    if( memorNumber === '0' && currentNumber !== '0') {
       memorNumber = currentNumber;
       console.log(' Add to memory: '+memorNumber)
     } else {
@@ -88,21 +88,21 @@ const App = () => {
             break;
           case '➖':
             sum = Number(firstNumber) - Number(currentNumber);
-            console.log(firstNumber+' + '+currentNumber+' = '+sum+' [enter]')
+            console.log(firstNumber+' - '+currentNumber+' = '+sum+' [enter]')
             setCurrentNumber(String(sum))
             setFirstNumber('0')
             setOperation('')
             break;
           case '✖️':
             sum = Number(firstNumber) * Number(currentNumber);
-            console.log(firstNumber+' + '+currentNumber+' = '+sum+' [enter]')
+            console.log(firstNumber+' ✖️ '+currentNumber+' = '+sum+' [enter]')
             setCurrentNumber(String(sum))
             setFirstNumber('0')
             setOperation('')
             break;  
           case '➗':
             sum = Number(firstNumber) / Number(currentNumber);
-            console.log(firstNumber+' + '+currentNumber+' = '+sum+' [enter]')
+            console.log(firstNumber+' ➗ '+currentNumber+' = '+sum+' [enter]')
             setCurrentNumber(String(sum))
             setFirstNumber('0')
             setOperation('')
